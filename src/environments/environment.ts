@@ -10,17 +10,6 @@ export const environment = {
   version: env.npm_package_version + '-dev',
   serverUrl: '/api',
   envName: 'DEV',
-  // domain: 'http://localhost',
-  domain: 'http://ec2-3-83-175-163.compute-1.amazonaws.com',
-
-  authUrl: 'api/authentication/user/v1',
-  authPort: '2001',
-  investorUrl: 'api/investor/investor/v1',
-  investorPort: '2002',
-  entrepreneurUrl: 'api/entrepreneur/entrepreneur/v1',
-  entrepreneurPort: '2003',
-  autocompleteUrl: 'api/common/autocomplete/v1',
-  autocompletePort: '2000'
 };
 
 /*
