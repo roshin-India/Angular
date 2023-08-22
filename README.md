@@ -22,11 +22,3 @@ default Angular application.
 Documentation
 -------------
 
-[Read The Documentation](https://angular-folder-structure.readthedocs.io/en/latest/#)
-for details on each part of the directory structure.
-
-Demonstration Application
--------------------------
-
-[See The Application](https://mathisgarberg.github.io/angular-folder-structure/)
-in action.  
