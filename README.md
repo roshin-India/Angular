@@ -1,10 +1,5 @@
-Angular Folder Structure - Highly Scalable
-========================================
-Tree Structure
---------------
-
-This tree represents the directories this repository proposes be added to a
-default Angular application.
+Angular Folder Structure Refference
+========================
 
 ```
   .
@@ -18,7 +13,4 @@ default Angular application.
       │   └── shared
       └── styles
 ```
-
-Documentation
--------------
 
