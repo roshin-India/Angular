@@ -1,0 +1,97 @@
+<div [ngClass]="{'billing-form-item': !blnEdit}">
+  <div class="billing-title-wrap row" >
+    <div class="col-lg-8 f-l">
+      <h3 class="widget-title pb-0">General Funding</h3>
+      <div class="title-shape margin-top-10px"></div>
+    </div>
+    <div class="col-lg-4 f-l" *ngIf="blnEdit">
+          <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+          <button  mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+    </div>
+  </div>
+  <div class="billing-content">
+      <div class="contact-form-action">
+          <form method="post" [formGroup]="objGeneralFunding">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Funding Goal
+                              <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                  data-placement="top" title="Funding Goal"></i></label>
+                          <div class="form-group">
+                              <!-- <i class="la la-twitter form-icon"></i> -->
+                              <input [appInputMaxLength]="100" formControlName="strFundingGoal" class="form-control" type="text" name="text"
+                                  placeholder="Funding Goal">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Funding Raised So Far
+                              <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Funding Raised So Far"></i></label>
+                          <div class="form-group">
+                              <!-- <i class="la la-twitter form-icon"></i> -->
+                              <input [appInputMaxLength]="100" formControlName="strFundingRaised"  class="form-control" type="text" name="text"
+                                  placeholder="Funding Raised So Far">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Funding Commitments
+                              <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Funding Commitments"></i></label>
+                          <div class="form-group">
+                              <!-- <i class="la la-twitter form-icon"></i> -->
+                              <input [appInputMaxLength]="100" formControlName="strFundingCommitments" class="form-control" type="text" name="text"
+                                  placeholder="Funding Commitments">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Select Funding Type <i
+                                  class="la la-question tip ml-1" data-toggle="tooltip"
+                                  data-placement="top" title="Select Funding Type"></i>
+                          </label>
+                          <div class="form-group ">
+                            <ng-select [items]="fundngTypes"
+                              [searchable]="true"
+                              bindLabel="name"
+                              [clearable]="false"
+                              [virtualScroll]="true"
+                              bindValue="id"
+                              formControlName="intFundingType" class="select-ng">
+                          </ng-select>
+                        </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-12">
+                    <div class="custom-checkbox mr-0">
+                      <p-checkbox class="p-checkbox" formControlName="blnTwo" binary="true" inputId="binary"></p-checkbox>
+                        <label class="label-p-checkbox" for="chb1">Show your General Funding information publicly
+                          ? <i class=" la la-question tip ml-1"
+                              title="Showing your General Funding information publicly
+                          may constitute general solicitation. General solicitation is a new
+                          commonly-used way for companies to raise funding. To learn about
+                          general solicitation, consult your legal counsel. If you uncheck
+                          this box, your General Funding information will be viewable to only
+                          Simpli Startup investors."></i>
+                      </label>
+                      <br>
+                      <label class="pl-4">Showing your General Funding information publicly
+                          may constitute general solicitation. General solicitation is a new
+                          commonly-used way for companies to raise funding. To learn about
+                          general solicitation, consult your legal counsel. If you uncheck
+                          this box, your General Funding information will be viewable to only
+                          Simpli Startup investors.</label>
+                  </div>
+                  </div>
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

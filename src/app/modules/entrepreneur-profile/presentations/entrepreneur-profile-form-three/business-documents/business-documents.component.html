@@ -1,0 +1,43 @@
+<div [ngClass]="{'billing-form-item': !blnEdit}">
+  <div class="billing-title-wrap row" >
+    <div class="col-lg-8 f-l">
+      <h3 class="widget-title pb-0">Business Documents</h3>
+      <div class="title-shape margin-top-10px"></div>
+    </div>
+    <div class="col-lg-4 f-l" *ngIf="blnEdit">
+          <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+          <button  mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+    </div>
+  </div>
+  <div class="billing-content">
+      <label class="label-text text-muted">Document file names will be viewable by Simpli Startup
+          investors and business supporters only. Actual documents are only viewable to
+          capital providers and business supporters that you choose to share with the
+          “Messages” tab.</label>
+      <div class="contact-form-action">
+          <form method="post" [formGroup]="objBusinessDocuments">
+              <div class="row">
+                  <div class="col-lg-6">
+
+                      <div class="input-box">
+                        <label class="label-text" >Business Documents
+                            <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                data-placement="top"
+                                title="Max. file size: 1 MB"></i></label>
+                        <div class="file-upload-wrap file-upload-wrap-2 col-lg-12 pad-l-r-0">
+                            <input type="file" name="files[]" multiple  (change)="fileChangeEvent($event)"
+                                class="multi file-upload-input with-preview width-100" >
+                            <span class="upload-span"><fa-icon [icon]="faCloudUpload" slot="start" class="m-r-5"></fa-icon>Upload </span>
+
+                            <div  class="col-lg-12 f-l" *ngFor="let val of arrDocs; let index = index">{{val?.fileName}}
+                              <i class="la la-times-circle-o removeIcon" (click)="removeUpload(index)"></i>
+                            </div>
+                            <div  class="col-lg-12 errorMsg" *ngFor="let strError of uploadError; let index = index" >{{strError}}</div>
+                        </div>
+                    </div><!-- end col-lg-4 -->
+                  </div><!-- end col-lg-6 -->
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

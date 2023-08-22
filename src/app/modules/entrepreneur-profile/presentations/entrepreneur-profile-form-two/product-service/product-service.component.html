@@ -1,0 +1,113 @@
+<div [ngClass]="{'billing-form-item': !blnEdit}">
+  <div class="billing-title-wrap row" >
+    <div class="col-lg-8 f-l">
+      <h3 class="widget-title pb-0">Product / Services</h3>
+      <div class="title-shape margin-top-10px"></div>
+    </div>
+    <div class="col-lg-4 f-l" *ngIf="blnEdit">
+          <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+          <button  mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+    </div>
+  </div>
+  <div class="billing-content">
+
+    <div class="contact-form-action" *ngIf="objProductService2" >
+      <form method="post"  [formGroup]="objProductService2">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text" appRequired
+                >Name of Product or Service</label
+              >
+              <div class="form-group">
+                <i class="la la-pencil form-icon"></i>
+                <input
+                [appInputMaxLength]="50"
+                  class="form-control"
+                  type="text"
+                  name="text"
+                  formControlName="strName"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- end col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text">Short Description</label>
+              <div class="form-group">
+                <div
+                  class="counter-text-area"
+                  id="counter-1"
+                ></div>
+                <textarea
+                  [appInputMaxLength]="150"
+                  class="desc-text-area form-control height-50"
+                  rows="3"
+                  name="message"
+                  maxlength="1000"
+                  id="message-1"
+                  formControlName="strShortDesc"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 f-l" >
+            <button type="button" *ngIf="!blnAddUpdate" [disabled]="!objProductService2.valid ? 'disabled': null"  class="btn btn-primary mb-2 f-r " (click)="addProductService()">Add</button>
+            <button type="button" *ngIf="blnAddUpdate" [disabled]="!objProductService2.valid ? 'disabled': null" class="btn btn-primary mb-2 f-r " (click)="updateProductService(indexEdit)">Update</button>
+          </div>
+          <!-- end col-lg-12 -->
+        </div>
+        </form>
+    </div>
+
+    <div  *ngIf="objEntrepreneurProfileFormTwo.value.objProductService" >
+            <div class="job-card job-card-layout"  *ngFor="let productService of objEntrepreneurProfileFormTwo.value.objProductService; let i = index;" >
+              <ng-container >
+                 <!-- Managers List -->
+                  <div class="job-card-details align-items-center justify-content-between">
+                      <div class="card-head d-flex align-items-center">
+                          <!-- <div class="company-avatar mr-3"> -->
+                              <!-- <a href="employer-details.html" class="d-block"> -->
+                                  <!-- <svg class="card-svg" version="1.1" id="Capa_1"
+                                      xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                      viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+                                      xml:space="preserve">
+                                      <circle style="fill:#263364;" cx="256" cy="256" r="256">
+                                      </circle>
+                                      <path style="fill:#151F45;"
+                                          d="M358.365,200.896c-3.076,1.955-6.348,4.972-9.815,9.046l-10.753-10.753h-44.549v74.864
+                                            L151.473,132.279h-50.524v248.182l130.349,130.349C239.427,511.588,247.665,512,256,512c125.879,0,230.536-90.853,251.978-210.563
+                                            l-97.297-97.297C394.909,194.75,373.92,191.013,358.365,200.896z"></path>
+                                      <g>
+                                          <path style="fill:#C9E1F6;"
+                                              d="M100.949,380.461V132.279h50.524V338.3h125.628v42.16H100.949V380.461z">
+                                          </path>
+                                          <path style="fill:#C9E1F6;"
+                                              d="M341.211,380.461h-47.963V199.19h44.55v25.774c7.622-12.175,14.479-20.197,20.568-24.067
+                                                c15.554-9.884,36.544-6.146,52.316,3.244l-14.85,41.818c-13.021-8.431-28.075-11.438-39.6-2.305
+                                                c-4.668,3.699-8.337,10.386-11.009,20.056C340.326,281.411,341.211,325.575,341.211,380.461z">
+                                          </path>
+                                      </g>
+                                  </svg> -->
+                              <!-- </a> -->
+                          <!-- </div> -->
+                          <div class="company-title-box">
+                              <h4 class="card-title mb-1">{{productService.strName}}</h4>
+                              <p class="card-sub">
+                                  <span class="mr-2"><i
+                                          class="la la-briefcase color-text-2 mr-1"></i>{{productService.strShortDesc}}</span>
+                              </p>
+                          </div>
+                      </div>
+                      <div class="float-right">
+                          <a class="cursor-p" (click)="editProductService(productService,i)"><i class="la la-lg la-pencil"></i></a>
+                          <a class="cursor-p" (click)="removeProductService(i)"><i class="la la-lg la-trash"></i></a>
+                      </div>
+                  </div>
+                </ng-container>
+              </div><!-- end row -->
+
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

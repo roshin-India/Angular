@@ -1,0 +1,41 @@
+<div mat-dialog-content>
+    <form *ngIf="!!objInvestorProfileForm" [formGroup]="objInvestorProfileForm">
+      <ng-container [ngSwitch]="editForm">
+        <ng-container *ngSwitchCase="'OVERVIEW_EDIT'">
+          <app-overview [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-overview>
+          <app-business-overview [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-business-overview>
+        </ng-container>
+        
+        <ng-container *ngSwitchCase="'SOCIAL_ACCOUNT_EDIT'">
+          <app-social-accounts [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-social-accounts>
+        </ng-container>
+        
+        <ng-container *ngSwitchCase="'SUMMARY_EDIT'">
+          <app-industries-of-interest [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-industries-of-interest>
+          <app-investment-of-interest [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-investment-of-interest>
+          <app-investment-activities [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-investment-activities>
+        </ng-container>
+        
+        <ng-container *ngSwitchCase="'FUNDING_EDIT'">
+          <app-funding [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-funding>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'CONTACT_EDIT'">
+          <app-contacts [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-contacts>
+        </ng-container>
+        
+        <ng-container *ngSwitchCase="'PORTFOLIO_EDIT'">
+          <app-portfolio [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-portfolio>
+        </ng-container>
+        
+        <ng-container *ngSwitchCase="'MANAGEMENT_EDIT'">
+          <app-management [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-management>
+        </ng-container>
+        
+        <ng-container *ngSwitchCase="'NEWS_LINK_EDIT'">
+          <app-news-links [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objInvestorProfileForm"></app-news-links>
+        </ng-container>
+        
+      </ng-container>
+    </form>
+</div>

@@ -1,0 +1,686 @@
+<app-breadcrumb></app-breadcrumb>
+
+<!-- ================================
+    START CANDIDATE DETAILS
+================================= -->
+<section class="candidate-details padding-top-100px padding-bottom-80px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="single-employer-wrap">
+                    <div class="candidate-description padding-bottom-35px">
+                        <h2 class="widget-title">Overview
+                            <span class="float-right">
+                                <button class="btn btn-primary" type="button" (click)="eventHandler('OVERVIEW_EDIT')"><i
+                                        class="la la-pen"></i> Edit</button>
+                                <span style="display: none;">
+                                    <button class="btn btn-primary"><i class="la la-save"></i> Save</button>
+                                    <button class="btn btn-primary"><i class="la la-times"></i> Cancel</button>
+                                </span>
+                            </span>
+                        </h2>
+                        <div class="title-shape"></div>
+                        <div class="row mt-4">
+                            <div class="bread-details d-flex align-items-center mt-3">
+                                <div class="bread-img">
+                                    <img [src]="overview?.objCompanyLogo?.data" alt="">
+                                </div>
+                                <div class="employer-content">
+                                    <h2 class="widget-title font-size-20 pb-1">{{overview?.strBusinessName}}</h2>
+                                    <p class="font-size-16 mt-1">
+                                        <span class="mr-2"><i class="la la-map-marker mr-1"></i> {{
+                                            overview?.strCityName}}, {{state?.name}}</span>
+                                    </p>
+                                    <p class="font-size-16 mt-1">
+                                        <span class="mr-2"><i class="la la-network-wired mr-1"></i>
+                                            {{overview?.strBusinessName }}</span>
+                                    </p>
+                                    <p class="font-size-16 mt-1">
+                                        <a href="{{overview?.strWebsite}}" target="_blank"><span class="mr-2"><i
+                                                    class="la la-globe mr-1"></i> {{overview?.strWebsite}}
+                                            </span></a>
+                                    </p>
+                                </div><!-- end employer-content -->
+                            </div><!-- end bread-details -->
+                            <p class="mt-2 font-size-15">
+                                <span class="mr-1">{{overview?.buisinessOverview}}</span>
+                            </p>
+                        </div>
+                    </div><!-- end candidate-description -->
+                    <div class="candidate-description padding-bottom-35px">
+                        <!-- <ul class="info-list float-right">
+                                                    <li class="d-inline-block"><a href="#"><i class="la la-edit font-weight-bold" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></i></a></li>
+                                                    <li class="d-inline-block"><a href="#"><i class="la la-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"></i></a></li>
+                                                </ul> -->
+                        <h2 class="widget-title">About Us
+                            <div class="float-right" (click)="eventHandler('ABOUT_US_EDIT')"><button class="btn btn-primary"><i
+                                        class="la la-pen"></i>
+                                    Edit</button></div>
+                        </h2>
+                        <div class="title-shape"></div>
+                        <p class="mt-3">
+                            {{companyDescription?.strShortDesc}}
+                        </p>
+                        <p class="mt-3">
+                            {{companyDescription?.strLongDesc}}
+                        </p>
+                    </div>
+                    <div class="candidate-education padding-bottom-35px">
+                        <h2 class="widget-title">Social Accounts
+                            <div class="float-right" (click)="eventHandler('SOCIAL_ACCOUNT_EDIT')"><button
+                                    class="btn btn-primary"><i class="la la-pen"></i>
+                                    Edit</button></div>
+                        </h2>
+
+                        <div class="title-shape"></div>
+                        <div class="row mt-5">
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-linkedin"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Linkedin</h4>
+                                        <p class="info__desc font-size-16 color-text-2">
+                                            {{socialAccounts?.strLinkedInUrl}}</p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-facebook"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Facebook</h4>
+                                        <p class="info__desc font-size-16 color-text-2">
+                                            {{socialAccounts?.strFacebookUrl}}</p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-twitter"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Twitter</h4>
+                                        <p class="info__desc font-size-16 color-text-2">
+                                            {{socialAccounts?.strTwitterUrl}}</p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-youtube"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Youtube</h4>
+                                        <p class="info__desc font-size-16 color-text-2">
+                                            {{socialAccounts?.strYoutubeUrl}}</p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-instagram"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Instagram</h4>
+                                        <p class="info__desc font-size-16 color-text-2">
+                                            {{socialAccounts?.strInstagramUrl}}</p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-pinterest"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Blog</h4>
+                                        <p class="info__desc font-size-16 color-text-2">{{socialAccounts?.strBlogUrl}}
+                                        </p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                        </div>
+                    </div>
+
+<div class="candidate-description padding-bottom-35px">
+    <h2 class="widget-title">More Info
+        <div class="float-right" (click)="eventHandler('MORE_INFO_EDIT')"><button class="btn btn-primary"><i
+                    class="la la-pen"></i>
+                Edit</button></div>
+    </h2>
+    <div class="title-shape"></div>
+    <div class="row mt-5">
+        <div class="col-lg-12 column-lg-half column-sd-full">
+            <div class="icon-box candidate-info d-flex align-items-center">
+                <div class="icon-element flex-shrink-0">
+                    <i class="la la-industry"></i>
+                </div><!-- end icon-element-->
+                <div class="info-content">
+                    <h4 class="info__title">Sub-Industries</h4>
+                    <!-- <ul style="list-style-type:square">
+                                            <li>asd</li>
+                                            <li>asd</li>
+                                        </ul> -->
+                    <p class="info__desc font-size-16 color-text-2">
+                        <ng-container *ngFor="let objIndustry of companyIndustry?.arrIndustries">
+                            {{ objIndustry?.text }} |
+                        </ng-container>
+                    </p>
+                </div><!-- end info-content -->
+            </div><!-- end icon-box -->
+        </div><!-- end col-lg-4 -->
+        <div class="col-lg-6 column-lg-half column-sd-full">
+            <div class="icon-box candidate-info d-flex align-items-center">
+                <div class="icon-element flex-shrink-0">
+                    <i class="la la-hand-holding-usd"></i>
+                </div><!-- end icon-element-->
+                <div class="info-content">
+                    <h4 class="info__title">Company Age</h4>
+                    <p class="info__desc font-size-16 color-text-2">{{companyAge}} months</p>
+                </div><!-- end info-content -->
+            </div><!-- end icon-box -->
+        </div><!-- end col-lg-4 -->
+        <div class="col-lg-6 column-lg-half column-sd-full">
+            <div class="icon-box candidate-info d-flex align-items-center">
+                <div class="icon-element flex-shrink-0">
+                    <i class="la la-money"></i>
+                </div><!-- end icon-element-->
+                <div class="info-content">
+                    <h4 class="info__title">No of employees</h4>
+                    <p class="info__desc font-size-16 color-text-2">{{companyAgeSize?.intNoOfCurrentEmp}}</p>
+                </div><!-- end info-content -->
+            </div><!-- end icon-box -->
+        </div><!-- end col-lg-4 -->
+        <!-- <div class="col-lg-12 column-sd-full">
+                                    <p class="color-text-2 text-center mb-3 font-weight-bold">Revenue</p>
+                                </div>
+                                <div class="col-lg-6 column-lg-half column-sd-full">
+                                    <div class="icon-box candidate-info d-flex align-items-center">
+                                        <div class="icon-element flex-shrink-0">
+                                            <i class="la la-coins"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <h4 class="info__title">Previous Year</h4>
+                                            <p class="info__desc font-size-16 color-text-2">Pending Approval</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 column-lg-half column-sd-full">
+                                    <div class="icon-box candidate-info d-flex align-items-center">
+                                        <div class="icon-element flex-shrink-0">
+                                            <i class="la la-coins"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <h4 class="info__title">Current Year</h4>
+                                            <p class="info__desc font-size-16 color-text-2">Pending Approval</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 column-lg-half column-sd-full">
+                                    <div class="icon-box candidate-info d-flex align-items-center">
+                                        <div class="icon-element flex-shrink-0">
+                                            <i class="la la-coins"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <h4 class="info__title">Next Year</h4>
+                                            <p class="info__desc font-size-16 color-text-2">Pending Approval</p>
+                                        </div>
+                                    </div>
+                                </div> -->
+    </div>
+</div>
+                    <div class="candidate-education padding-bottom-35px">
+                        <h2 class="widget-title">Revenue
+                            <div class="float-right" (click)="eventHandler('REVENUE_EDIT')"><button class="btn btn-primary"><i
+                                        class="la la-pen"></i>
+                                    Edit</button></div>
+                        </h2>
+                        <div class="title-shape"></div>
+                        <div class="row mt-5">
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-coins"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Previous Year</h4>
+                                        <p class="info__desc font-size-16 color-text-2">{{companyFinancials?.intCompRevFiscalYear}}</p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-coins"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Current Year</h4>
+                                        <p class="info__desc font-size-16 color-text-2">{{companyFinancials?.intCurrentCompRevFiscalYear}}
+                                        </p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                            <div class="col-lg-6 column-lg-half column-sd-full">
+                                <div class="icon-box candidate-info d-flex align-items-center">
+                                    <div class="icon-element flex-shrink-0">
+                                        <i class="la la-coins"></i>
+                                    </div><!-- end icon-element-->
+                                    <div class="info-content">
+                                        <h4 class="info__title">Next Year</h4>
+                                        <p class="info__desc font-size-16 color-text-2">{{companyFinancials?.intProjectedCompRevFiscalYear}}
+                                        </p>
+                                    </div><!-- end info-content -->
+                                </div><!-- end icon-box -->
+                            </div><!-- end col-lg-4 -->
+                        </div>
+                    </div>
+
+                    <div class="candidate-description padding-bottom-35px">
+                            <h2 class="widget-title">Products / Services
+        <div class="float-right" (click)="eventHandler('PRODUCT_SERVICE_EDIT')"><button class="btn btn-primary"><i
+                    class="la la-pen"></i>
+                Edit</button></div>
+    </h2>
+                            <div class="title-shape"></div>
+                            <div class="row mt-5">
+                              <ng-container *ngFor="let objProductService of productService">
+                                <div class="job-card job-card-layout">
+                                    <div class="card-head d-flex align-items-center">
+                                        <div class="company-title-box">
+                                            <h4 class="card-title mb-1"><a href="#">{{objProductService?.strName}} </a> </h4>
+                                            <p class="card-sub">
+                                                <span class="mr-2">{{objProductService?.strShortDesc}} </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                              </ng-container>
+
+                            </div>
+                        </div>
+
+                    <div class="candidate-description padding-bottom-35px">
+                        <h2 class="widget-title">Management <div class="float-right"><button class="btn btn-primary"
+                                    (click)="eventHandler('MANAGEMENT_EDIT')"><i class="la la-pen"></i> Edit</button>
+                            </div>
+                        </h2>
+                        <div class="title-shape"></div>
+                        <div class="row mt-5">
+                            <ng-container *ngFor="let objManager of management">
+                                <div class="job-card job-card-layout">
+                                    <div class="float-right">
+                                    </div>
+                                    <div class="card-head d-flex align-items-center">
+                                        <div class="company-avatar mr-3">
+                                            <a class="d-block">
+                                                <img [src]="objManager.objPhoto?.data" alt="">
+                                                <!-- <svg class="card-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <circle style="fill:#263364;" cx="256" cy="256" r="256">
+                    </circle>
+                    <path style="fill:#151F45;"
+                        d="M358.365,200.896c-3.076,1.955-6.348,4.972-9.815,9.046l-10.753-10.753h-44.549v74.864
+                                                          L151.473,132.279h-50.524v248.182l130.349,130.349C239.427,511.588,247.665,512,256,512c125.879,0,230.536-90.853,251.978-210.563
+                                                          l-97.297-97.297C394.909,194.75,373.92,191.013,358.365,200.896z"></path>
+                    <g>
+                        <path style="fill:#C9E1F6;"
+                            d="M100.949,380.461V132.279h50.524V338.3h125.628v42.16H100.949V380.461z">
+                        </path>
+                        <path style="fill:#C9E1F6;"
+                            d="M341.211,380.461h-47.963V199.19h44.55v25.774c7.622-12.175,14.479-20.197,20.568-24.067
+                                                              c15.554-9.884,36.544-6.146,52.316,3.244l-14.85,41.818c-13.021-8.431-28.075-11.438-39.6-2.305
+                                                              c-4.668,3.699-8.337,10.386-11.009,20.056C340.326,281.411,341.211,325.575,341.211,380.461z">
+                        </path>
+                    </g>
+                </svg> -->
+                                            </a>
+                                        </div>
+                                        <div class="company-title-box">
+                                            <h4 class="card-title mb-1"><a href="#">{{objManager.strFullName}}</a> </h4>
+                                            <p class="card-sub mb-1"><i
+                                                    class="la la-briefcase color-text-2 mr-1"></i>{{objManager.strDesignation}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card-content mt-4 margin-bottom-30px">
+                                        <p class="card-sub">{{objManager.strOverviewManagement}}</p>
+                                    </div>
+                                </div>
+                            </ng-container>
+
+                            <!-- <div class="job-card job-card-layout">
+                                <div class="float-right">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="Edit"><i class="la la-lg la-pencil"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="Remove"><i class="la la-lg la-trash ml-2"></i></a>
+                                </div>
+                                <div class="card-head d-flex align-items-center">
+                                    <div class="company-avatar mr-3">
+                                        <a href="employer-details.html" class="d-block">
+                                            <svg class="card-svg" version="1.1" id="Capa_1"
+                                                xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512 512"
+                                                style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                                <circle style="fill:#263364;" cx="256" cy="256" r="256">
+                                                </circle>
+                                                <path style="fill:#151F45;"
+                                                    d="M358.365,200.896c-3.076,1.955-6.348,4.972-9.815,9.046l-10.753-10.753h-44.549v74.864
+                                                          L151.473,132.279h-50.524v248.182l130.349,130.349C239.427,511.588,247.665,512,256,512c125.879,0,230.536-90.853,251.978-210.563
+                                                          l-97.297-97.297C394.909,194.75,373.92,191.013,358.365,200.896z"></path>
+                                                <g>
+                                                    <path style="fill:#C9E1F6;"
+                                                        d="M100.949,380.461V132.279h50.524V338.3h125.628v42.16H100.949V380.461z">
+                                                    </path>
+                                                    <path style="fill:#C9E1F6;"
+                                                        d="M341.211,380.461h-47.963V199.19h44.55v25.774c7.622-12.175,14.479-20.197,20.568-24.067
+                                                              c15.554-9.884,36.544-6.146,52.316,3.244l-14.85,41.818c-13.021-8.431-28.075-11.438-39.6-2.305
+                                                              c-4.668,3.699-8.337,10.386-11.009,20.056C340.326,281.411,341.211,325.575,341.211,380.461z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="company-title-box">
+                                        <h4 class="card-title mb-1"><a href="#">Simon James</a> </h4>
+                                        <p class="card-sub mb-1"><i
+                                                class="la la-briefcase color-text-2 mr-1"></i>President
+                                            Executive Officer</p>
+                                    </div>
+                                </div>
+                                <div class="card-content mt-4 margin-bottom-30px">
+                                    <p class="card-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Pharetra magna ac
+                                        placerat vestibulum lectus mauris. Nullam eget felis eget nunc.
+                                        Elementum sagittis vitae et leo duis ut diam quam nulla. Amet
+                                        consectetur adipiscing elit ut aliquam purus sit amet luctus. Nibh ipsum
+                                        consequat nisl vel pretium. Massa tempor nec feugiat nisl. Massa id
+                                        neque aliquam vestibulum morbi blandit cursus. Suspendisse potenti
+                                        nullam ac tortor vitae purus faucibus. Mattis ullamcorper velit sed
+                                        ullamcorper morbi tincidunt ornare massa. Vestibulum lorem sed risus
+                                        ultricies tristique nulla aliquet. Senectus et netus et malesuada fames
+                                        ac turpis.</p>
+                                </div>
+                            </div>
+                            <div class="job-card job-card-layout">
+                                <div class="float-right">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="Edit"><i class="la la-lg la-pencil"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="Remove"><i class="la la-lg la-trash ml-2"></i></a>
+                                </div>
+                                <div class="card-head d-flex align-items-center">
+                                    <div class="company-avatar mr-3">
+                                        <a href="employer-details.html" class="d-block">
+                                            <svg class="card-svg" version="1.1" id="Capa_1"
+                                                xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512 512"
+                                                style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                                <circle style="fill:#263364;" cx="256" cy="256" r="256">
+                                                </circle>
+                                                <path style="fill:#151F45;"
+                                                    d="M358.365,200.896c-3.076,1.955-6.348,4.972-9.815,9.046l-10.753-10.753h-44.549v74.864
+                                                          L151.473,132.279h-50.524v248.182l130.349,130.349C239.427,511.588,247.665,512,256,512c125.879,0,230.536-90.853,251.978-210.563
+                                                          l-97.297-97.297C394.909,194.75,373.92,191.013,358.365,200.896z"></path>
+                                                <g>
+                                                    <path style="fill:#C9E1F6;"
+                                                        d="M100.949,380.461V132.279h50.524V338.3h125.628v42.16H100.949V380.461z">
+                                                    </path>
+                                                    <path style="fill:#C9E1F6;"
+                                                        d="M341.211,380.461h-47.963V199.19h44.55v25.774c7.622-12.175,14.479-20.197,20.568-24.067
+                                                              c15.554-9.884,36.544-6.146,52.316,3.244l-14.85,41.818c-13.021-8.431-28.075-11.438-39.6-2.305
+                                                              c-4.668,3.699-8.337,10.386-11.009,20.056C340.326,281.411,341.211,325.575,341.211,380.461z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="company-title-box">
+                                        <h4 class="card-title mb-1"><a href="#">Simon James</a> </h4>
+                                        <p class="card-sub mb-1"><i
+                                                class="la la-briefcase color-text-2 mr-1"></i>President
+                                            Executive Officer</p>
+                                    </div>
+                                </div>
+                                <div class="card-content mt-4 margin-bottom-30px">
+                                    <p class="card-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Pharetra magna ac
+                                        placerat vestibulum lectus mauris. Nullam eget felis eget nunc.
+                                        Elementum sagittis vitae et leo duis ut diam quam nulla. Amet
+                                        consectetur adipiscing elit ut aliquam purus sit amet luctus. Nibh ipsum
+                                        consequat nisl vel pretium. Massa tempor nec feugiat nisl. Massa id
+                                        neque aliquam vestibulum morbi blandit cursus. Suspendisse potenti
+                                        nullam ac tortor vitae purus faucibus. Mattis ullamcorper velit sed
+                                        ullamcorper morbi tincidunt ornare massa. Vestibulum lorem sed risus
+                                        ultricies tristique nulla aliquet. Senectus et netus et malesuada fames
+                                        ac turpis.</p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div><!-- end candidate-description -->
+                </div><!-- end single-employer-wrap -->
+            </div><!-- end col-lg-8 -->
+            <div class="col-lg-5">
+                <div class="sidebar">
+                    <div class="sidebar-widget">
+                        <div class="billing-form-item">
+                            <div class="billing-title-wrap">
+                                <h2 class="widget-title">Funding
+                                    <div class="float-right"><button class="btn btn-primary" (click)="eventHandler('FUNDING_EDIT')"><i
+                                                class="la la-pen"></i> Edit</button>
+                                    </div>
+                                </h2>
+                                <div class="title-shape"></div>
+                            </div>
+                            <div class="billing-content">
+                                <div class="info-list static-info">
+                                    <table class="table table-striped ">
+                                        <tr>
+                                            <td>
+                                                Goal
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                                {{funding?.strFundingGoal}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Raised So Far
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                                {{funding?.strFundingRaised}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Commitments
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                                {{funding?.strFundingCommitments}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Remaining
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Type
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                                {{getFundingType(funding?.intFundingType)}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Pre-Money
+                                                Valuation <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                                    data-placement="top" title=""
+                                                    data-original-title="Viewable by Simpli Startup investors only"></i>
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                                {{funding?.intPreMoneyValuation}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Investor
+                                                Ownership <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                                    data-placement="top" title=""
+                                                    data-original-title="Viewable by Simpli Startup investors only"></i>
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                                -
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Interest/Dividend <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                                    data-placement="top" title=""
+                                                    data-original-title="Viewable by Simpli Startup investors only"></i>
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                                {{funding?.intInterest}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Previous
+                                                Funding <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                                    data-placement="top" title=""
+                                                    data-original-title="Viewable by Simpli Startup investors only"></i>
+                                            </td>
+                                            <td class="text-right font-weight-bold">
+                                                {{funding?.intPrevFund}}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end sidebar-widget -->
+                    <div class="sidebar-widget">
+                        <div class="billing-form-item">
+                            <div class="billing-title-wrap">
+
+                                <h3 class="widget-title">Documents <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                        data-placement="top" title=""
+                                        data-original-title="Viewable by Simpli Startup investors only"></i>
+                                    <div class="float-right"><button class="btn btn-primary" (click)="eventHandler('DOCUMENT_EDIT')"><i
+                                                class="la la-pen"></i> Edit</button>
+                                    </div>
+                                    </h3>
+                                <div class="title-shape"></div>
+                            </div><!-- billing-title-wrap -->
+                            <div class="billing-content">
+                                <ul>
+                                    <li *ngFor="let documents of businessDocuments?.arrBusinessDocuments">
+                                        <a href="#">{{documents?.fileName}}</a>
+                                        <!-- <div class="float-right">
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                                data-original-title="Edit"><i class="la la-lg la-pencil"></i></a>
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                                data-original-title="Remove"><i class="la la-lg la-trash ml-2"></i></a>
+                                        </div> -->
+                                    </li>
+                                </ul>
+
+                            </div><!-- end billing-content -->
+                        </div>
+                    </div>
+                    <div class="sidebar-widget">
+                        <div class="billing-form-item">
+                            <div class="billing-title-wrap">
+                                <h3 class="widget-title">Media
+                                    <div class="float-right"><button class="btn btn-primary" (click)="eventHandler('MEDIA_EDIT')"><i
+                                                class="la la-pen"></i> Edit</button>
+                                    </div>
+                                </h3>
+                                <div class="title-shape"></div>
+                            </div><!-- billing-title-wrap -->
+                            <div class="billing-content">
+                                <video width="100%" height="240" id="my_video_1" class="video-js vjs-default-skin"  controls preload="none"
+                                  poster=''
+                                  data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+                                  <source [src]="media?.strVideoLinkUrl" type='video/mp4' />
+                                  <source [src]="media?.strVideoLinkUrl" type='video/webm' />
+                                </video>
+                              <!-- <iframe width="100%" height="240" height="315" [src]="this._sanitizer.bypassSecurityTrustResourceUrl(media?.strVideoLinkUrl)" frameborder="0" allowfullscreen>
+                                Your browser does not support the video tag.
+                              </iframe> -->
+                                <div class="media-carousel carousel-item-wrap">
+                                    <ng-container *ngFor="let objMedia of media?.arrMediaImages">
+                                        <div class="team-item">
+                                            <div class="team-img-box">
+                                                <img [src]="objMedia?.data" alt="">
+                                            </div>
+                                            <!-- <div class="team-titles">
+                                                                                  <p class="team__meta">Chief Executive Officer</p>
+                                                                              </div> -->
+                                        </div><!-- end team-item -->
+                                    </ng-container>
+                                </div><!-- end team-carousel -->
+                            </div><!-- end billing-content -->
+                        </div>
+                    </div>
+                    <div class="sidebar-widget">
+                        <div class="billing-form-item">
+                            <div class="billing-title-wrap">
+
+                                <h3 class="widget-title">News / Links <div class="float-right">
+                                        <button class="btn btn-primary" (click)="eventHandler('NEWS_LINK_EDIT')"><i class="la la-pen"></i>
+                                            Edit</button>
+                                    </div>
+                                </h3>
+                                <div class="title-shape"></div>
+                            </div><!-- billing-title-wrap -->
+                            <div class="billing-content">
+                                <ul>
+                                    <li *ngFor="let news of [newsLinks]"><a [routerLink]="news?.strNewsLinkUrl">{{news?.strLinkText}}</a>
+                                        <div class="float-right">
+                                            <!-- <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                                                    data-original-title="Edit"><i class="la la-lg la-pencil"></i></a>
+                                                                <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                                                    data-original-title="Remove"><i class="la la-lg la-trash ml-2"></i></a> -->
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div><!-- end billing-content -->
+                        </div>
+                    </div>
+                    <div class="sidebar-widget">
+                        <div class="billing-form-item">
+                            <div class="billing-title-wrap">
+                                <h3 class="widget-title">Contact
+                                    <div class="float-right" (click)="eventHandler('CONTACT_EDIT')">
+                                        <button class="btn btn-primary"><i class="la la-pen"></i>
+                                            Edit
+                                        </button>
+                                    </div>
+                                </h3>
+                                <div class="title-shape"></div>
+                            </div><!-- billing-title-wrap -->
+                            <div class="billing-content">
+                                <span *ngFor="let cont of [contact]">{{cont?.strFullName}}</span>
+                            </div><!-- end billing-content -->
+                        </div>
+                    </div>
+                </div><!-- end sidebar -->
+            </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end candidate-details -->
+<!-- ================================
+    END CANDIDATE DETAILS
+================================= -->

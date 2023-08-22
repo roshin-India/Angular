@@ -1,0 +1,55 @@
+
+<div [ngClass]="{'billing-form-item': !blnEdit}" #title>
+    <div class="billing-title-wrap row">
+        <div class="col-lg-8 f-l">
+            <h3 class="widget-title pb-0">Industries of Interest</h3>
+            <div class="title-shape margin-top-10px"></div>
+        </div>
+        <div class="col-lg-4 f-l" *ngIf="blnEdit">
+            <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+            <button mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+        </div>
+    </div>
+  <div class="billing-content">
+      <div class="contact-form-action">
+          <form  method="post" [formGroup]="objIndustriesOfInterest">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="input-box">
+                          <label class="font-weight-bold" appRequired>Industries of Interest <i
+                                  class="la la-question tip ml-1" data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Industries of Interest"></i>
+                          </label>
+                          <div class="form-group">
+                            <ng-multiselect-dropdown class="select-ng" #multiSelect
+                            [placeholder]="'Select Industry Sectors'"
+                            [settings]="settings"
+                            [data]="dropdownList"
+                            formControlName="arrIndustriesOfInterest"
+                            [disabled]="false"
+                            (onFilterChange)="onFilterChange($event)"
+                            (onDropDownClose)="onDropDownClose($event)"
+                            (onSelect)="onItemSelect($event)"
+                            (onDeSelect)="onDeSelect($event)"
+                            (onSelectAll)="onSelectAll($event)"
+                            (onDeSelectAll)="onDeSelectAll($event)">
+                          </ng-multiselect-dropdown>
+                          <app-control-messages [control]="industriesOfInterestFormControl['arrIndustriesOfInterest']" [labelName]="'Industries of Interest'"></app-control-messages>
+
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <!-- <div class="col-lg-12">
+                      <div class="input-box">
+                          <label class="label-text">Resume Description</label>
+                          <div class="form-group">
+                              <textarea class="user-text-editor-3 form-control height-50" name="message"></textarea>
+                          </div>
+                      </div>
+                  </div> -->
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

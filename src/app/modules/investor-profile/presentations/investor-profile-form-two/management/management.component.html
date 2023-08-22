@@ -1,0 +1,131 @@
+<div [ngClass]="{'billing-form-item': !blnEdit}" #title>
+  <div class="billing-title-wrap row">
+    <div class="col-lg-8 f-l">
+      <h3 class="widget-title pb-0">Management</h3>
+      <div class="title-shape margin-top-10px"></div>
+    </div>
+    <div class="col-lg-4 f-l" *ngIf="blnEdit">
+      <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+      <button mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+    </div>
+  </div>
+  <div class="billing-content">
+
+    <div class="contact-form-action" *ngIf="objManagement2" >
+      <form method="post"  [formGroup]="objManagement2">
+        <div class="row management-row"  >
+          <div class="col-lg-6" >
+                  <div class="input-box">
+                      <label class="label-text" appRequired>Full Name</label>
+                      <div class="form-group">
+                          <span class="la la-user form-icon"></span>
+                          <input class="form-control" type="text" name="text" formControlName="strFullName" [appInputMaxLength]="100"
+                              placeholder="Full Name">
+                              <app-control-messages [control]="objManagement2.controls.strFullName" [labelName]="'Full Name'"></app-control-messages>
+                      </div>
+                  </div>
+              </div><!-- end col-lg-6 -->
+              <div class="col-lg-6">
+                  <div class="input-box">
+                      <label class="label-text">Linkedin Url <span
+                          class="text-muted ml-1">(optional)</span></label>
+                      <div class="form-group">
+                          <span class="la la-linkedin form-icon"></span>
+                          <input class="form-control" type="text" name="text" formControlName="strLinkedInUrl" [appInputMaxLength]="50"
+                              placeholder="Linkedin Url">
+                      </div>
+                  </div>
+              </div><!-- end col-lg-6 -->
+              <div class="col-lg-6">
+                  <div class="input-box">
+                      <label class="label-text">Desingation/Title</label>
+                      <div class="form-group">
+                          <span class="la la-title form-icon"></span>
+                          <input class="form-control" type="text" name="text" formControlName="strDesignation" [appInputMaxLength]="100"
+                              placeholder="Desingation/Title">
+                      </div>
+                  </div>
+              </div><!-- end col-lg-6 -->
+              <div class="col-lg-6">
+                  <div class="input-box">
+                      <label class="label-text">Email <span
+                          class="text-muted ml-1">(optional)</span></label>
+                      <div class="form-group">
+                          <span class="la la-envelope form-icon"></span>
+                          <input class="form-control" type="text" name="text" formControlName="strEmail" [appInputMaxLength]="100"
+                              placeholder="Email">
+                      </div>
+                  </div>
+              </div><!-- end col-lg-6 -->
+
+              <div class="col-lg-6">
+                  <div class="input-box">
+                      <label class="label-text">Description</label>
+                      <div class="form-group">
+                          <textarea class=" form-control height-50" name="message" [appInputMaxLength]="150" formControlName="strOverviewManagement"></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+              <div class="col-lg-12 f-l">
+                <div class="input-box">
+                  <label class="label-text" >Upload Photo
+                      <i class="la la-question tip ml-1" data-toggle="tooltip"
+                          data-placement="top"
+                          title="Max. file size: 1 MB"></i></label>
+                  <div class="file-upload-wrap file-upload-wrap-2 col-lg-12">
+                      <div class="col-lg-4 f-l pad-l-r-0">
+                        <input type="file" name="files[]" (change)="fileChangeEvent($event)"
+                            class="multi file-upload-input with-preview width-100" >
+                        <span class="upload-span"><i
+                                class="la la-photo mr-2"></i>Upload Photo</span>
+                      </div>
+                      <div class="col-lg-4 f-l" *ngIf="strUploadData">
+                        <img [src]=strUploadData alt="logo" class="image-width">
+                      </div>
+                      <div *ngIf="strPhotoName" class="col-lg-12 f-l">{{strPhotoName}}
+                        <i class="la la-times-circle-o removeIcon" (click)="removeUpload()"></i>
+                      </div>
+                      <div *ngIf="imageError" class="col-lg-12 errorMsg"  >{{imageError}}</div>
+                  </div>
+                </div><!-- end col-lg-4 -->
+              </div>
+
+            </div><!-- end col-lg-6 -->
+            <div class="col-lg-6">
+              </div>
+            <div class="col-lg-6">
+              <button type="button" *ngIf="!blnAddUpdate" [disabled]="!objManagement2.valid ? 'disabled': null"  class="btn btn-primary mb-2 f-r " (click)="addManagement()">Add</button>
+              <button type="button" *ngIf="blnAddUpdate" [disabled]="!objManagement2.valid ? 'disabled': null" class="btn btn-primary mb-2 f-r " (click)="updateManagement(indexEdit)">Update</button>
+              </div>
+          </div><!-- end row -->
+        </form>
+    </div>
+    <div  *ngIf="objInvestorProfileFormTwo.value.objManagement.length" >
+            <div class="job-card job-card-layout"  *ngFor="let management of objInvestorProfileFormTwo.value.objManagement; let i = index;" >
+              <ng-container >
+                 <!-- Managers List -->
+                  <div class="job-card-details align-items-center justify-content-between">
+                      <div class="card-head d-flex align-items-center">
+                          <div class="company-avatar mr-3 b-r-50" *ngIf="!!management?.objPhoto?.data">
+                            <img src={{management.objPhoto.data}} alt="logo">
+                          </div>
+                          <div class="company-title-box">
+                              <h4 class="card-title mb-1" *ngIf="management?.strFullName">{{management.strFullName}}</h4>
+                              <p class="card-sub">
+                                  <span class="mr-2"><i
+                                          class="la la-briefcase color-text-2 mr-1" *ngIf="management?.strDesignation"></i>{{management.strDesignation}}</span>
+                              </p>
+                          </div>
+                      </div>
+                      <div class="float-right">
+                          <a class="cursor-p" (click)="editManagement(management,i)"><i class="la la-lg la-pencil"></i></a>
+                          <a class="cursor-p" (click)="removeManagement(i)"><i class="la la-lg la-trash"></i></a>
+                      </div>
+                  </div>
+                </ng-container>
+              </div><!-- end row -->
+
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

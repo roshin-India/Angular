@@ -1,0 +1,30 @@
+<div [ngClass]="{'billing-form-item': !blnEdit}" #title>
+    <div class="billing-title-wrap row">
+        <div class="col-lg-8 f-l">
+            <h3 class="widget-title pb-0">Contact</h3>
+            <div class="title-shape margin-top-10px"></div>
+        </div>
+        <div class="col-lg-4 f-l" *ngIf="blnEdit">
+            <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+            <button mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+        </div>
+    </div>
+  <div class="billing-content">
+      <div class="contact-form-action">
+          <form method="post" [formGroup]="objContact">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Full Name</label>
+                          <div class="form-group">
+                              <span class="la la-user form-icon"></span>
+                              <input [appInputMaxLength]="100" class="form-control" type="text" name="text" formControlName="strFullName"
+                                  placeholder="Full Name">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

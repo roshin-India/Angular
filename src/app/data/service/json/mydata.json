@@ -1,0 +1,127 @@
+{
+  "objInvestorProfileFormOne": {
+    "objOverview": {
+      "strFirmName": "Deepak",
+      "objLogo": {
+        "strLogoName": null,
+        "objData": null
+      },
+      "intInvestorMemberType": 4,
+      "intNoOfInvestorFirm": 1,
+      "intCountry": 1,
+      "intState": 1,
+      "strCityName": "City",
+      "strZipCode": "22423",
+      "strWebsite": "gd",
+      "strPhone": null
+    },
+    "objSocialAccounts": {
+      "strLinkedInUrl": "dfdg",
+      "strFacebookUrl": "vnvbn",
+      "strTwitterUrl": "vbnvn",
+      "strYoutubeUrl": "vnbvbn",
+      "strInstagramUrl": "vbnvnb",
+      "strBlogUrl": "vbnvbn"
+    },
+    "objBuisinessOverview": {
+      "strBuisinessOverview": "vxvxf fghfghfhfh ftrytryghfhdf dfgdgdfgdgdg"
+    },
+    "objInvestorAccreditation": {
+      "blnOne": null,
+      "blnTwo": null,
+      "blnThree": null,
+      "blnFour": true
+    },
+    "objFunding": {
+      "intMinReveneuStage": 1,
+      "intMaxReveneuStage": 2,
+      "intMinInvestmentStage": 2,
+      "intMaxInvestmentStage": 1
+    }
+  },
+  "objInvestorProfileFormTwo": {
+    "objIndustriesOfInterest": {
+      "arrIndustriesOfInterest": [
+        {
+          "id": 1,
+          "text": "Biotech, Pharmaceuticals, Healthcare,Medical Devices & Equipment"
+        },
+        {
+          "id": 2,
+          "text": "Business Products &amp; Services, IT Services"
+        },
+        {
+          "id": 3,
+          "text": "Communications"
+        },
+        {
+          "id": 4,
+          "text": "Computers &amp; Control Systems,Peripherals, Robotics"
+        },
+        {
+          "id": 5,
+          "text": "Consumer Products &amp; Services,Retailing"
+        },
+        {
+          "id": 6,
+          "text": "Electronics &amp; Instrumentation,Semiconductors, Na"
+        },
+        {
+          "id": 7,
+          "text": "Energy &amp; Utilities"
+        },
+        {
+          "id": 8,
+          "text": "Financial Services &amp; Real Estate"
+        },
+        {
+          "id": 9,
+          "text": "Industrial &amp; Manufacturing,Materials, Chemicals"
+        },
+        {
+          "id": 10,
+          "text": "Media &amp; Entertainment"
+        },
+        {
+          "id": 11,
+          "text": "Software"
+        },
+        {
+          "id": 12,
+          "text": "Transportation &amp; Distribution,Aerospace, Defense"
+        }
+      ]
+    },
+    "objInvestmentInterest": {
+      "intPrimaryTypeCapital": 1,
+      "intExpRateOfReturnPerYear": 23,
+      "intMinValueOfInterest": 2,
+      "intMaxValueOfInterest": 1
+    },
+    "objInvestmentAcivities": {
+      "intNoBuisinessReviewed": 4,
+      "intNoBuisinessInvested": 2,
+      "intToalCapitalInvested": 16
+    },
+    "objManagement": [
+      {
+        "strFullName": "jj",
+        "strLinkedInUrl": "ll",
+        "strDesignation": "lll",
+        "strEmail": "llll",
+        "objPhoto": null,
+        "strOverviewManagement": "iii"
+      }
+    ]
+  },
+  "objInvestorProfileFormThree": {
+    "objPortfolio": null,
+    "objNews": {
+      "strNewsLinkUrl": "adasd",
+      "strLinkText": "asdasd"
+    },
+    "objContact": {
+      "strFullName": "CZCXZXCZFFDF "
+    }
+  }
+}

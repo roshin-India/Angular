@@ -1,0 +1,86 @@
+<div [ngClass]="{'billing-form-item': !blnEdit}">
+<div class="billing-title-wrap row">
+    <div class="col-lg-8 f-l">
+        <h3 class="widget-title pb-0">Social Accounts</h3>
+        <div class="title-shape margin-top-10px"></div>
+    </div>
+    <div class="col-lg-4 f-l" *ngIf="blnEdit">
+        <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+        <button mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+    </div>
+</div>
+  <div class="billing-content">
+      <div class="contact-form-action">
+          <form method="post" [formGroup]="objSocialAccounts">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Linkedin Link <span
+                                  class="text-muted">(optional)</span></label>
+                          <div class="form-group">
+                              <i class="la la-linkedin form-icon"></i>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strLinkedInUrl"
+                                  placeholder="https://www.linkedin.com">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Facebook Link <span
+                                  class="text-muted">(optional)</span></label>
+                          <div class="form-group">
+                              <i class="la la-facebook-f form-icon"></i>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strFacebookUrl"
+                                  placeholder="https://www.facebook.com">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Twitter Link <span
+                                  class="text-muted">(optional)</span></label>
+                          <div class="form-group">
+                              <i class="la la-twitter form-icon"></i>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strTwitterUrl"
+                                  placeholder="https://www.twitter.com">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Youtube <span
+                                  class="text-muted">(optional)</span></label>
+                          <div class="form-group">
+                              <i class="la la-youtube form-icon"></i>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strYoutubeUrl"
+                                  placeholder="https://www.youtube.com">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Instagram Link <span
+                                  class="text-muted">(optional)</span></label>
+                          <div class="form-group">
+                              <i class="la la-instagram form-icon"></i>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strInstagramUrl"
+                                  placeholder="https://www.instagram.com">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Blog Link <span
+                                  class="text-muted">(optional)</span></label>
+                          <div class="form-group">
+                              <i class="la la-pinterest-p form-icon"></i>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strBlogUrl"
+                                  placeholder="https://www.example.com">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

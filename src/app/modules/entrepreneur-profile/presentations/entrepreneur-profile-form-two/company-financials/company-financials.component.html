@@ -1,0 +1,60 @@
+<div [ngClass]="{'billing-form-item': !blnEdit}">
+  <div class="billing-title-wrap row" >
+    <div class="col-lg-8 f-l">
+      <h3 class="widget-title pb-0">Company Financials</h3>
+      <div class="title-shape margin-top-10px"></div>
+    </div>
+    <div class="col-lg-4 f-l" *ngIf="blnEdit">
+          <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+          <button  mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+    </div>
+  </div>
+  <div class="billing-content">
+      <div class="contact-form-action">
+
+          <form  method="post" [formGroup]="objCompanyFinancials">
+            <div class="row">
+              <div class="col-lg-6">
+                  <div class="input-box">
+                      <label class="label-text">Provide the company revenue for the
+                          previous fiscal year <i class="la la-question tip ml-1"
+                              data-toggle="tooltip" data-placement="top" title="Provide the company revenue for the
+                          previous fiscal year"></i></label>
+                      <div class="form-group">
+                          <span class="la la-dollar form-icon"></span>
+                          <input class="form-control" type="number" appOnlyNumber [appInputMaxLength]="50" name="number" formControlName="intCompRevFiscalYear"
+                              placeholder="Provide the company revenue for the previous fiscal year ">
+                      </div>
+                  </div>
+              </div><!-- end col-lg-6 -->
+              <div class="col-lg-6">
+                  <div class="input-box">
+                      <label class="label-text">Provide the projected company revenue for
+                          the next fiscal year <i class="la la-question tip ml-1"
+                              data-toggle="tooltip" data-placement="top"
+                              title="Provide the projected company revenue for the next fiscal year"></i></label>
+                      <div class="form-group">
+                          <span class="la la-dollar form-icon"></span>
+                          <input class="form-control" type="number" appOnlyNumber [appInputMaxLength]="50" name="number" formControlName="intProjectedCompRevFiscalYear"
+                              placeholder="Provide the projected company revenue for the next fiscal year">
+                      </div>
+                  </div>
+              </div><!-- end col-lg-6 -->
+              <div class="col-lg-6">
+                  <div class="input-box">
+                      <label class="label-text">Provide the company revenue for the
+                          current fiscal year <i class="la la-question tip ml-1"
+                              data-toggle="tooltip" data-placement="top"
+                              title="Provide the company revenue for the current fiscal year"></i></label>
+                      <div class="form-group">
+                          <span class="la la-dollar form-icon"></span>
+                          <input class="form-control" type="number" appOnlyNumber [appInputMaxLength]="50" name="number" formControlName="intCurrentCompRevFiscalYear"
+                              placeholder="Provide the company revenue for the current fiscal year ">
+                      </div>
+                  </div>
+              </div><!-- end col-lg-6 -->
+          </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

@@ -1,0 +1,99 @@
+<div class="billing-form-item">
+  <div class="billing-title-wrap">
+    <h3 class="widget-title pb-0">Investment Interest</h3>
+    <div class="title-shape margin-top-10px"></div>
+  </div>
+  <!-- billing-title-wrap -->
+  <div class="billing-content">
+    <div class="contact-form-action">
+      <form method="post" [formGroup]="objInvestmentInterest">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text" >Primary Type of Capital Provided</label>
+              <div class="form-group ">
+                <ng-select [items]="primaryTypes"
+                      [searchable]="true"
+                      bindLabel="name"
+                      [clearable]="false"
+                      [virtualScroll]="true"
+                      bindValue="id"
+                      formControlName="intPrimaryTypeCapital" class="select-ng">
+                  </ng-select>
+                </div>
+            </div>
+          </div>
+          <!-- end col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text"
+                >Expected Rate of Return per Year (%)
+                <span class="text-muted ml-1">(optional)</span></label
+              >
+              <div class="form-group">
+                <span class="la la-percent form-icon"></span>
+                <input
+                  [appInputMaxLength]="50"
+                  class="form-control"
+                  type="text"
+                  appOnlyNumber
+                  formControlName="intExpRateOfReturnPerYear"
+                  placeholder="Expected Rate of Return per Year (%)"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- end col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text"
+                >Minimum Valuation of Interest ($)
+                <span class="text-muted ml-1">(optional)</span></label
+              >
+              <div class="form-group">
+                <span class="la la-pencil form-icon"></span>
+                <div class="form-group ">
+                  <ng-select [items]="minValuation"
+                        [searchable]="true"
+                        bindLabel="name"
+                        [clearable]="false"
+                        [virtualScroll]="true"
+                        bindValue="id"
+                        formControlName="intMinValueOfInterest" class="select-ng">
+                    </ng-select>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- end col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text"
+                >Maximum Valuation of Interest ($)
+                <span class="text-muted ml-1">(optional)</span></label
+              >
+              <div class="form-group">
+                <span class="la la-pencil form-icon"></span>
+                <div class="form-group ">
+                  <ng-select [items]="maxValuation"
+                        [searchable]="true"
+                        bindLabel="name"
+                        [clearable]="false"
+                        [virtualScroll]="true"
+                        bindValue="id"
+                        formControlName="intMaxValueOfInterest" class="select-ng">
+                    </ng-select>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- end col-lg-6 -->
+        </div>
+        <!-- end row -->
+      </form>
+    </div>
+    <!-- end contact-form-action -->
+  </div>
+  <!-- end billing-content -->
+</div>
+<!-- end billing-form-item -->

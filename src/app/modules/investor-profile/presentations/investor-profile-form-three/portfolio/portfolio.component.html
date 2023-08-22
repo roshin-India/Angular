@@ -1,0 +1,150 @@
+<div [ngClass]="{'billing-form-item': !blnEdit}" #title>
+  <div class="billing-title-wrap row">
+    <div class="col-lg-8 f-l">
+      <h3 class="widget-title pb-0">Portfolio</h3>
+      <div class="title-shape margin-top-10px"></div>
+    </div>
+    <div class="col-lg-4 f-l" *ngIf="blnEdit">
+      <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+      <button mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+    </div>
+  </div>
+  <div class="billing-content">
+      <div class="contact-form-action">
+          <form method="post" [formGroup]="objPortfolio2">
+              <label class="">Add companies that are already on Simpli Startup by typing their
+                  name and then selecting them from the drop-down.
+              </label>
+              <label class="">Add companies that are not yet on Simpli Startup by typing their
+                  name and selecting "Add a New Company".
+              </label>
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Company name</label>
+                          <div class="form-group">
+                              <span class="la la-user form-icon"></span>
+                              <!-- <ng-select [items]="portfolio$ | async"
+                                  [searchable]="true"
+                                  bindLabel="strCompanyName"
+                                  [clearable]="false"
+                                  [virtualScroll]="true"
+                                  formControlName="strCompanyName" class="select-ng">
+                              </ng-select> -->
+                                <ng-autocomplete #ngAutoCompleteStatic
+                                                 [data]="portfolio$ | async"
+                                                 formControlName="strCompanyName"
+                                                 [initialValue]=""
+                                                 [placeholder]="'Company Name'"
+                                                 [searchKeyword]="keyword"
+                                                 historyIdentifier="countriesReactiveList"
+                                                 [historyHeading]="historyHeading"
+                                                 historyListMaxNumber="3"
+                                                 notFoundText="Not found"
+                                                 [itemTemplate]="itemTemplateStatic"
+                                                 [notFoundTemplate]="notFoundTemplate"
+                                                 (selected)='selectEvent($event)'
+                                                  (inputChanged)='onChangeSearch($event)'
+                                                  class="select-ng"
+                                                >
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplateStatic let-item>
+                                  <a [innerHTML]="item.strCompanyName"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                  <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                              <!-- <input [appInputMaxLength]="100" class="form-control" type="text" name="text" formControlName="strCompanyName"
+                                  placeholder="Company Name"> -->
+                                  <app-control-messages [control]="objPortfolio2.controls.strCompanyName" [labelName]="'Company name'"></app-control-messages>
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                        <label class="label-text" >Upload Logo
+                            <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                data-placement="top"
+                                title="Max. file size: 1 MB"></i></label>
+                        <div class="file-upload-wrap file-upload-wrap-2 col-lg-12">
+                          <div class="col-lg-4 f-l pad-l-r-0">
+                            <input type="file" name="files[]" (change)="fileChangeEvent($event)"
+                            class="multi file-upload-input with-preview width-100" >
+                        <span class="upload-span"><i
+                                class="la la-photo mr-2"></i>Upload Logo</span>
+                          </div>
+                          <div class="col-lg-4 f-l" *ngIf="strUploadData">
+                            <img src={{strUploadData}} alt="logo" class="image-width">
+                          </div>
+
+
+                            <div *ngIf="strLogoName" class="col-lg-12 f-l">{{strLogoName}}
+                              <i class="la la-times-circle-o removeIcon" (click)="removeUpload()"></i>
+                            </div>
+                            <div *ngIf="imageError" class="col-lg-12 errorMsg"  >{{imageError}}</div>
+                        </div>
+                    </div><!-- end col-lg-4 -->
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Company website <span
+                                  class="text-muted ml-1">(optional)</span></label>
+                          <div class="form-group">
+                              <span class="la la-link form-icon"></span>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strCompanyWebsite"
+                                  placeholder="Company website">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Company role</label>
+                          <div class="form-group ">
+                            <ng-select [items]="companyRoles"
+                              [searchable]="true"
+                              bindLabel="name"
+                              [clearable]="false"
+                              [virtualScroll]="true"
+                              bindValue="id"
+                              formControlName="strCompanyRole" class="select-ng">
+                          </ng-select>
+                        </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-12 f-l" >
+                    <button type="button" *ngIf="!blnAddUpdate" [disabled]="!objPortfolio2.valid ? 'disabled': null"  class="btn btn-primary mb-2 f-r " (click)="addPortfolio()">Add</button>
+                    <button type="button" *ngIf="blnAddUpdate" [disabled]="!objPortfolio2.valid ? 'disabled': null" class="btn btn-primary mb-2 f-r " (click)="updatePortfolio(indexEdit)">Update</button>
+                  </div>
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+      <div  *ngIf="objInvestorProfileFormThree.value.objPortfolio.length" >
+        <div class="job-card job-card-layout"  *ngFor="let portfolio of objInvestorProfileFormThree.value.objPortfolio; let i = index;" >
+          <ng-container >
+             <!-- Managers List -->
+              <div class="job-card-details align-items-center justify-content-between">
+                  <div class="card-head d-flex align-items-center">
+                      <div class="company-avatar mr-3 b-r-50" *ngIf="!!portfolio?.objCompanyLogo?.data">
+                        <img src={{portfolio?.objCompanyLogo.data}} alt="logo">
+                      </div>
+                      <div class="company-title-box">
+                          <h4 class="card-title mb-1" *ngIf="portfolio.strCompanyName">{{portfolio.strCompanyName}}</h4>
+                          <p class="card-sub">
+                              <span class="mr-2"><i
+                                      class="la la-briefcase color-text-2 mr-1" *ngIf="getCompanyRole(portfolio.strCompanyRole)"></i>{{getCompanyRole(portfolio.strCompanyRole)}}</span>
+                          </p>
+                      </div>
+                  </div>
+                  <div class="float-right">
+                      <a class="cursor-p" (click)="editPortfolio(portfolio,i)"><i class="la la-lg la-pencil cursor-p"></i></a>
+                      <a class="cursor-p" (click)="removePortfolio(i)"><i class="la la-lg la-trash cursor-p"></i></a>
+                  </div>
+              </div>
+            </ng-container>
+          </div><!-- end row -->
+
+  </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

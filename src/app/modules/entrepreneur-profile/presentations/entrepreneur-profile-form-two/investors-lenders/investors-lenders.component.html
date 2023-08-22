@@ -1,0 +1,369 @@
+<div class="billing-form-item">
+  <div class="billing-title-wrap">
+      <h3 class="widget-title pb-0">Investors / Lenders</h3>
+      <div class="title-shape margin-top-10px"></div>
+  </div><!-- billing-title-wrap -->
+  <div class="billing-content">
+      <div class="contact-form-action">
+
+          <form  method="post" [formGroup]="objInvestorsLenders">
+            <label class=""
+                        >Add investors/lenders that are already on Simpli
+                        Startup by typing their name and then selecting them
+                        from the drop-down.
+                      </label>
+                      <label class=""
+                        >Add investors/lenders that are not yet on Simpli
+                        Startup by typing their name and selecting "Add a New
+                        Investor".
+                      </label>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Investors / Lenders</label
+                            >
+                            <div class="form-group">
+                              <span class="la la-user form-icon"></span>
+                              <ng-autocomplete #ngAutoCompleteStatic
+                                                 [data]="investor$ | async"
+                                                 formControlName="strInvestorLanders"
+                                                 [initialValue]=""
+                                                 [placeholder]="'Investors / Lenders'"
+                                                 [searchKeyword]="keyword"
+                                                 historyIdentifier="countriesReactiveList"
+                                                 [historyHeading]="historyHeading"
+                                                 historyListMaxNumber="3"
+                                                 notFoundText="Not found"
+                                                 [itemTemplate]="itemTemplateStatic"
+                                                 [notFoundTemplate]="notFoundTemplate"
+                                                 (selected)='selectEvent($event)'
+                                                  (inputChanged)='onChangeSearch($event)'
+                                                  (inputCleared)="onInputClear()"
+                                                  class="select-ng"
+                                                >
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplateStatic let-item>
+                                  <a [innerHTML]="item.name"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                  <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                              <!-- <input
+                                class="form-control"
+                                [appInputMaxLength]="100"
+                                type="text"
+                                name="text"
+                                placeholder="Investors / Lenders"
+                                formControlName="strInvestorLanders"
+                              /> -->
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6"></div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Select Type
+                              <span class="text-muted ml-1"
+                                >(optional)</span
+                              ></label
+                            >
+                            <div class="form-group ">
+                              <ng-select [items]="selectType"
+                                [searchable]="true"
+                                bindLabel="name"
+                                [clearable]="false"
+                                [virtualScroll]="true"
+                                bindValue="id"
+                                formControlName="intSelectType" class="select-ng">
+                            </ng-select>
+                          </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text" >Upload Photo
+                                <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Max. file size: 1 MB"></i></label>
+                            <div class="file-upload-wrap file-upload-wrap-2 col-lg-12 pad-l-r-0">
+                              <div class="col-lg-4 f-l">
+                                <input type="file" name="files[]" (change)="fileChangeEvent($event)"
+                                    class="multi file-upload-input with-preview width-100" >
+                                <span class="upload-span"><i
+                                        class="la la-photo mr-2"></i>Upload Photo</span>
+
+                              </div>
+                              <div class="col-lg-4 f-l" *ngIf="strUploadData">
+                                <img src={{strUploadData}} alt="logo" class="image-width">
+                              </div>
+                                <div *ngIf="strPhotoName" class="col-lg-12 f-l">{{strPhotoName}}
+                                  <i class="la la-times-circle-o removeIcon" (click)="removeUpload()"></i>
+                                </div>
+                                <div *ngIf="imageError" class="col-lg-12 errorMsg"  >{{imageError}}</div>
+                            </div>
+                        </div><!-- end col-lg-4 -->
+                          <!-- end col-lg-4 -->
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Select country
+                              <!-- <span class="text text-danger font-weight-bold"
+                                >*</span
+                              > -->
+                              </label
+                            >
+                            <div class="form-group ">
+                              <ng-select [items]="country$ | async"
+                                [searchable]="true"
+                                bindLabel="name"
+                                [clearable]="false"
+                                [virtualScroll]="true"
+                                bindValue="countryId"
+                              (change)="contryChange($event)"
+                                formControlName="intCountry" class="select-ng">
+                            </ng-select>
+                          <!-- <app-control-messages [control]="objInvestorsLenders.get('intCountry')" [labelName]="'Country'"></app-control-messages> -->
+                        </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Select State or Province
+                              <!-- <span class="text text-danger font-weight-bold"
+                                >*</span> -->
+                              <i class="la la-question tip ml-1" data-toggle="tooltip" data-placement="top"
+                                title="Select a Country for State to load"></i>
+                              </label
+                            >
+                            <div class="form-group ">
+                              <ng-select [items]="state$ | async"
+                                [searchable]="true"
+                                bindLabel="name"
+                                [clearable]="false"
+                                [virtualScroll]="true"
+                                bindValue="stateId"
+                                formControlName="intState" class="select-ng">
+                            </ng-select>
+                          <!-- <app-control-messages [control]="objInvestorsLenders.get('intState')" [labelName]="'State'"></app-control-messages> -->
+                          </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Enter City Name
+                              <!-- <span class="text text-danger font-weight-bold"
+                                >*</span
+                              > -->
+                              </label
+                            >
+                            <div class="form-group">
+                              <span class="la la-user form-icon"></span>
+                              <input
+                                class="form-control"
+                                [appInputMaxLength]="100"
+                                type="text"
+                                name="text"
+                                placeholder="Enter City Name"
+                                formControlName="strCityName"
+                              />
+                          <!-- <app-control-messages [control]="objInvestorsLenders.get('strCityName')" [labelName]="'City'"></app-control-messages> -->
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Zip / Postal Code
+                              <!-- <span class="text text-danger font-weight-bold"
+                                >*</span
+                              > -->
+                              </label
+                            >
+                            <div class="form-group">
+                              <span class="la la-user form-icon"></span>
+                              <input
+                                class="form-control"
+                                [appInputMaxLength]="50"
+                                type="text"
+                                name="text"
+                                placeholder="Zip / Postal Code"
+                                formControlName="strZipCode"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Email
+                              <span class="text-muted ml-1"
+                                >(optional)</span
+                              ></label
+                            >
+                            <div class="form-group">
+                              <span class="la la-envelope form-icon"></span>
+                              <input
+                                class="form-control"
+                                [appInputMaxLength]="50"
+                                type="text"
+                                name="text"
+                                placeholder="http://www.example.com"
+                                formControlName="strEmail"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Linkedin URL
+                              <span class="text-muted ml-1"
+                                >(optional)</span
+                              ></label
+                            >
+                            <div class="form-group">
+                              <span class="la la-linkedin form-icon"></span>
+                              <input
+                                class="form-control"
+                                [appInputMaxLength]="50"
+                                type="text"
+                                name="text"
+                                placeholder="http://www.example.com"
+                                formControlName="strLinkedIn"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-12">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >General Description</label
+                            >
+                            <div class="form-group">
+                              <div
+                                class="counter-text-area"
+                                id="counter-1"
+                              ></div>
+                              <textarea
+                                class="desc-text-area form-control height-50"
+                                [appInputMaxLength]="150"
+                                rows="3"
+                                name="message"
+                                maxlength="1500"
+                                id="message-3"
+                                formControlName="strGeneralDesc"
+                              ></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-12">
+                          <label class="label-text text-muted"
+                            >Viewable by Simpli Startup Investors only</label
+                          >
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Investment Amount ($)
+                              <span class="text-muted ml-1"
+                                >(optional)</span
+                              ></label
+                            >
+                            <div class="form-group">
+                              <span class="la la-dollar form-icon"></span>
+                              <input
+                                class="form-control"
+                                type="number" appOnlyNumber [appInputMaxLength]="50"
+                                name="text"
+                                placeholder="Investment Amount ($)"
+                                formControlName="intInvestmentAmount"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Investment Round
+                              <span class="text-muted ml-1"
+                                >(optional)</span
+                              ></label
+                            >
+                            <div class="form-group ">
+                              <ng-select [items]="investmentRound"
+                                [searchable]="true"
+                                bindLabel="name"
+                                [clearable]="false"
+                                [virtualScroll]="true"
+                                bindValue="id"
+                                formControlName="intInvestmentRound" class="select-ng">
+                            </ng-select>
+                          </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Investment Type
+                              <span class="text-muted ml-1"
+                                >(optional)</span
+                              ></label
+                            >
+                            <div class="form-group ">
+                              <ng-select [items]="investmentType"
+                                [searchable]="true"
+                                bindLabel="name"
+                                [clearable]="false"
+                                [virtualScroll]="true"
+                                bindValue="id"
+                                formControlName="intInvestmentType" class="select-ng">
+                            </ng-select>
+                          </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                          <div class="input-box">
+                            <label class="label-text"
+                              >Investment Date
+                              <span class="text-muted ml-1"
+                                >(optional)</span
+                              ></label
+                            >
+                            <div class="form-group">
+                              <i class="la la-calendar form-icon"></i>
+                              <input
+                                class="form-control"
+                                type="date"
+                                name="date"
+                                formControlName="strInvestmentDate"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-6 -->
+                      </div>
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

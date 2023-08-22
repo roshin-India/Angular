@@ -1,0 +1,97 @@
+<div class="" #title>
+    <div class="billing-title-wrap row">
+        <div class="col-lg-8 f-l">
+            <h3 class="widget-title pb-0">Funding</h3>
+            <div class="title-shape margin-top-10px"></div>
+        </div>
+        <div class="col-lg-4 f-l" *ngIf="blnEdit">
+            <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+            <button mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+        </div>
+    </div>
+  <div class="billing-content pb-3">
+      <div class="contact-form-action">
+          <form *ngIf="objFunding" method="post" [formGroup]= "objFunding">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <label class="font-weight-bold">Revenue Stage of Interest</label>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                    <div class="input-box">
+                      <label class="label-text" appRequired>Minimum <i class="la la-question tip ml-1"
+                         title="123"></i>
+                      </label>
+                      <div class="form-group ">
+                          <ng-select [items]="funding"
+                            [searchable]="true"
+                            bindLabel="name"
+                            bindValue="id"
+                            [clearable]="false"
+                            formControlName="intMinReveneuStage" class="select-ng">
+                          </ng-select>
+                          <app-control-messages [control]="fundingFormControl['intMinReveneuStage']" [labelName]="'Minimum'"></app-control-messages>
+                      </div>
+                  </div>
+
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Maximum <i class="la la-question tip ml-1"
+                                  data-toggle="tooltip" data-placement="top" title="123"></i>
+                          </label>
+                          <div class="form-group ">
+                              <ng-select [items]="funding"
+                                [searchable]="true"
+                                bindLabel="name"
+                                [clearable]="false"
+                                [virtualScroll]="true"
+                                bindValue="id"
+                                formControlName="intMaxReveneuStage" class="select-ng">
+                            </ng-select>
+                            <app-control-messages [control]="fundingFormControl['intMaxReveneuStage']" [labelName]="'Maximum'"></app-control-messages>
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-12">
+                      <label class="font-weight-bold">Investment Range of Interest</label>
+                  </div><!-- end col-lg-6 -->
+
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Minimum <i class="la la-question tip ml-1"
+                                  data-toggle="tooltip" data-placement="top" title="123"></i>
+                          </label>
+                          <div class="form-group ">
+                              <ng-select [items]="funding"
+                                [searchable]="true"
+                                bindLabel="name"
+                                bindValue="id"
+                                [clearable]="false"
+                                formControlName="intMinInvestmentStage" class="select-ng">
+                            </ng-select>
+                            <app-control-messages [control]="fundingFormControl['intMinInvestmentStage']" [labelName]="'Minimum'"></app-control-messages>
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Maximum <i class="la la-question tip ml-1"
+                                  data-toggle="tooltip" data-placement="top" title="123"></i>
+                          </label>
+                          <div class="form-group ">
+                              <ng-select [items]="funding"
+                                [searchable]="true"
+                                bindLabel="name"
+                                [clearable]="false"
+                                bindValue="id"
+                                formControlName="intMaxInvestmentStage" class="select-ng">
+                            </ng-select>
+                            <app-control-messages [control]="fundingFormControl['intMaxInvestmentStage']" [labelName]="'Maximum'"></app-control-messages>
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

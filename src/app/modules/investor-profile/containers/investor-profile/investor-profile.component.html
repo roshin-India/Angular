@@ -1,0 +1,81 @@
+ <!-- ================================
+    START BREADCRUMB AREA
+================================= -->
+<section class="breadcrumb-area">
+  <div class="breadcrumb-wrap">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="breadcrumb-content d-flex flex-wrap justify-content-between align-items-center">
+                      <div class="section-heading">
+                          <h2 class="sec__title mb-0">Complete Profile</h2>
+                      </div><!-- end section-heading -->
+                      <ul class="list-items d-flex align-items-center">
+                          <li class="active__list-item"><a href="index.html">Home</a></li>
+                          <li class="active__list-item">Pages</li>
+                          <li>Complete Profile</li>
+                      </ul>
+                  </div><!-- end breadcrumb-content -->
+              </div><!-- end col-lg-12 -->
+          </div><!-- end row -->
+      </div><!-- end container -->
+  </div><!-- end breadcrumb-wrap -->
+</section><!-- end breadcrumb-area -->
+<!-- ================================
+END BREADCRUMB AREA
+================================= -->
+<div class="container">
+  <div id="stepper1" class="bs-stepper">
+    <div class="bs-stepper-header">
+      <div class="step" data-target="#test-l-1">
+        <button class="step-trigger" [routerLink]="[investorProfile+'/1']" >
+          <span class="bs-stepper-label">Step</span>
+          <span class="bs-stepper-circle">1</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-2">
+        <button class="step-trigger" [routerLink]="[investorProfile+'/2']">
+          <span class="bs-stepper-label">Step</span>
+          <span class="bs-stepper-circle">2</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-3">
+        <button class="step-trigger" [routerLink]="[investorProfile+'/3']">
+          <span class="bs-stepper-label">Step</span>
+          <span class="bs-stepper-circle">3</span>
+        </button>
+      </div>
+    </div>
+    <div class="">
+        <div id="test-l-1" class="content">
+        </div>
+        <div id="test-l-2" class="content">
+        </div>
+        <div id="test-l-3" class="content text-center">
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================
+    START CANDIDATE RESUME
+================================= -->
+<section class="candidate-resume-area  padding-bottom-100px">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="candidate-resume-wrap" >
+                <form *ngIf="objInvestorProfileForm" [formGroup]="objInvestorProfileForm">
+                  <router-outlet (activate)="onNavigate($event)"></router-outlet>
+                </form>
+              </div><!-- end candidate-resume-wrap -->
+          </div><!-- end col-lg-8 -->
+      </div><!-- end row -->
+  </div><!-- end container -->
+</section><!-- end candidate-resume-area -->
+<!-- ================================
+END CANDIDATE RESUME
+================================= -->
+

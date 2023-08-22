@@ -1,0 +1,47 @@
+<div class="billing-form-item">
+  <div class="billing-title-wrap">
+      <h3 class="widget-title pb-0">Private Funding <i class="la la-question tip ml-1"
+              data-toggle="tooltip" data-placement="top"
+              title="Viewable by Simpli Startup investors only"></i>
+      </h3>
+      <div class="title-shape margin-top-10px"></div>
+  </div><!-- billing-title-wrap -->
+  <div class="billing-content pb-3">
+      <div class="contact-form-action">
+          <form method="post" [formGroup]="objPrivateFunding">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Pre-Money Valuation ($)</label>
+                          <div class="form-group">
+                              <span class="la la-dollar form-icon"></span>
+                              <input [appInputMaxLength]="50" formControlName="intPreMoneyValuation" appOnlyNumber class="form-control" type="text" name="text"
+                                  placeholder="Pre-Money Valuation ($)">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Interest / Dividend (%)</label>
+                          <div class="form-group">
+                              <span class="la la-percent form-icon"></span>
+                              <input [appInputMaxLength]="50" formControlName="intInterest" appOnlyNumber class="form-control" type="text" name="text"
+                                  placeholder="Interest / Dividend (%)">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Previous Funding ($)</label>
+                          <div class="form-group">
+                              <span class="la la-dollar form-icon"></span>
+                              <input [appInputMaxLength]="50" formControlName="intPrevFund" appOnlyNumber class="form-control" type="text" name="text"
+                                  placeholder="Previous Funding ($)">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->

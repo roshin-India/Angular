@@ -1,0 +1,60 @@
+<div mat-dialog-content>
+    <form *ngIf="!!objEntrepreneurProfileForm" [formGroup]="objEntrepreneurProfileForm">
+        <ng-container [ngSwitch]="editForm">
+            <ng-container *ngSwitchCase="'OVERVIEW_EDIT'">
+                <app-overview [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-overview>
+                <app-business-overview [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-business-overview>
+            </ng-container>
+            <ng-container *ngSwitchCase="'MORE_INFO_EDIT'">
+                <app-company-industry [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-company-industry>
+                <app-company-age-size [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-company-age-size>
+            </ng-container>
+            <ng-container *ngSwitchCase="'ABOUT_US_EDIT'">
+                <app-company-description [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-company-description>
+            </ng-container>
+            <ng-container *ngSwitchCase="'SOCIAL_ACCOUNT_EDIT'">
+                <app-social-accounts [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-social-accounts>
+            </ng-container>
+            <ng-container *ngSwitchCase="'REVENUE_EDIT'">
+                <app-company-financials [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-company-financials>
+            </ng-container>
+            <ng-container *ngSwitchCase="'PRODUCT_SERVICE_EDIT'">
+                <app-product-service [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-product-service>
+            </ng-container>
+            <ng-container *ngSwitchCase="'MANAGEMENT_EDIT'">
+                <app-management [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-management>
+            </ng-container>
+            <ng-container *ngSwitchCase="'FUNDING_EDIT'">
+                <app-general-funding [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-general-funding>
+                <app-private-funding [blnEdit]="true" (event)="handleEventFromPresentation($event)"
+                    [formGroup]="objEntrepreneurProfileForm"></app-private-funding>
+            </ng-container>
+            <ng-container *ngSwitchCase="'DOCUMENT_EDIT'">
+                <app-business-documents [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objEntrepreneurProfileForm">
+                </app-business-documents>
+            </ng-container>
+            <ng-container *ngSwitchCase="'MEDIA_EDIT'">
+                <app-media [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objEntrepreneurProfileForm">
+                </app-media>
+            </ng-container>
+            <ng-container *ngSwitchCase="'NEWS_LINK_EDIT'">
+                <app-news-links [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objEntrepreneurProfileForm">
+                </app-news-links>
+            </ng-container>
+            <ng-container *ngSwitchCase="'CONTACT_EDIT'">
+                <app-contacts [blnEdit]="true" (event)="handleEventFromPresentation($event)" [formGroup]="objEntrepreneurProfileForm">
+                </app-contacts>
+            </ng-container>
+        </ng-container>
+    </form>
+</div>

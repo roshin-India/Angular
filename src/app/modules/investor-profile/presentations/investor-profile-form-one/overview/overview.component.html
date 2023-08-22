@@ -1,0 +1,182 @@
+
+
+<div [ngClass]="{'billing-form-item': !blnEdit}" #title >
+  <div class="billing-title-wrap row" >
+    <div class="col-lg-8 f-l">
+      <h3 class="widget-title pb-0">Overview</h3>
+      <div class="title-shape margin-top-10px"></div>
+    </div>
+    <div class="col-lg-4 f-l" *ngIf="blnEdit">
+          <button mat-button class="f-r m-l-5" (click)="cancel()">Cancel</button>
+          <button  mat-raised-button class="f-r" (click)="update()" cdkFocusInitial>Update</button>
+    </div>
+  </div><!-- billing-title-wrap -->
+
+  <div class="billing-content">
+      <div class="contact-form-action">
+
+          <form *ngIf="objOverview" method="post" [formGroup]="objOverview">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>What's Your Firm Name</label>
+                          <div class="form-group">
+                              <span class="la la-user form-icon"></span>
+                              <input  [appInputMaxLength]="100" formControlName="strFirmName" class="form-control" type="text" name="text"
+                                  placeholder="Your firm name">
+                                  <app-control-messages [control]="overviewFormControl['strFirmName']" [labelName]="'Name'"></app-control-messages>
+
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Logo of the firm
+                              <i class="la la-question tip ml-1" data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Max. file size: 1 MB"></i></label>
+                          <div class="file-upload-wrap file-upload-wrap-2 col-lg-12">
+                            <div class="col-lg-4 f-l pad-l-r-0 ">
+                              <input type="file" name="files[]" (change)="fileChangeEvent($event)"
+                              class="multi file-upload-input with-preview width-100" >
+                              <span class="upload-span"><i
+                                      class="la la-photo mr-2"></i>Upload Photo</span>
+                            </div>
+                            <div class="col-lg-4 f-l" *ngIf="strUploadData">
+                                <img src={{strUploadData}} alt="logo" class="image-width">
+                            </div>
+
+
+                              <app-control-messages [control]="overviewFormControl['objLogo']" [labelName]="'Firm logo'"></app-control-messages>
+
+                              <div *ngIf="strLogoName" class="col-lg-12 f-l">{{strLogoName}}
+                                <i class="la la-times-circle-o removeIcon" (click)="removeUpload()"></i>
+                              </div>
+                              <div *ngIf="imageError" class="col-lg-12 errorMsg"  >{{imageError}}</div>
+                          </div>
+                      </div><!-- end col-lg-4 -->
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Investor/MemberType</label>
+                          <div class="form-group ">
+                            <ng-select [items]="investorTypes"
+                              [searchable]="true"
+                              bindLabel="name"
+                              [clearable]="false"
+                              [virtualScroll]="true"
+                              bindValue="id"
+                              formControlName="intInvestorMemberType" class="select-ng">
+                          </ng-select>
+                          <app-control-messages [control]="overviewFormControl['intInvestorMemberType']" [labelName]="'Investor/MemberType'"></app-control-messages>
+                        </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Number of investors represented by your
+                              firm </label>
+                          <div class="form-group">
+                              <span class="la la-pencil form-icon"></span>
+                              <input formControlName="intNoOfInvestorFirm" class="form-control" type="text" appOnlyNumber name="text"
+                                  placeholder="Number of investors represented by your firm"
+                                  value="1" [appInputMaxLength]="4">
+                              <app-control-messages [control]="overviewFormControl['intNoOfInvestorFirm']" [labelName]="'Number of investors'"></app-control-messages>
+
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Select country</label>
+                          <div class="form-group ">
+                            <ng-select [items]="country$ | async"
+                              [searchable]="true"
+                              bindLabel="name"
+                              [clearable]="false"
+                              [virtualScroll]="true"
+                              bindValue="countryId"
+                              (change)="contryChange($event)"
+                              formControlName="intCountry" class="select-ng">
+                          </ng-select>
+                          <app-control-messages [control]="overviewFormControl['intCountry']" [labelName]="'Country'"></app-control-messages>
+                        </div></div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Select State or Provincey
+                            <i class="la la-question tip ml-1" data-toggle="tooltip" data-placement="top" title="Select a Country for State to load"></i>
+                          </label>
+                          <div class="form-group ">
+                            <ng-select [items]="state$ | async"
+                              [searchable]="true"
+                              bindLabel="name"
+                              [clearable]="false"
+                              [virtualScroll]="true"
+                              bindValue="stateId"
+                              formControlName="intState" class="select-ng">
+                          </ng-select>
+                          <app-control-messages [control]="overviewFormControl['intState']" [labelName]="'State'"></app-control-messages>
+                        </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Enter City Name</label>
+                          <div class="form-group">
+                              <span class="la la-user form-icon"></span>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strCityName"
+                                  placeholder="Enter City Name">
+                              <app-control-messages [control]="overviewFormControl['strCityName']" [labelName]="'City name'"></app-control-messages>
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text" appRequired>Zip / Postal Code</label>
+                          <div class="form-group">
+                              <span class="la la-user form-icon"></span>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strZipCode"
+                                  placeholder="Zip / Postal Code">
+                              <app-control-messages [control]="overviewFormControl['strZipCode']" [labelName]="'Zip / Postal Code'"></app-control-messages>
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Website <span
+                                  class="text-muted ml-1">(optional)</span></label>
+                          <div class="form-group">
+                              <span class="la la-globe form-icon"></span>
+                              <input [appInputMaxLength]="50" class="form-control" type="text" name="text" formControlName="strWebsite"
+                                  placeholder="http://www.example.com">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+                  <div class="col-lg-6">
+                      <div class="input-box">
+                          <label class="label-text">Phone (Provide Phone number for you or
+                              your business)</label>
+                          <div class="form-group">
+                              <span class="la la-phone form-icon"></span>
+                              <input  [appInputMaxLength]="50"  class="form-control" type="text" name="text" formControlName="strPhone"
+                                  placeholder="Phone">
+                          </div>
+                      </div>
+                  </div><!-- end col-lg-6 -->
+
+                  <!-- <div class="col-lg-12">
+                      <div class="input-box">
+                          <label class="label-text">Resume Description</label>
+                          <div class="form-group">
+                              <textarea class="user-text-editor-3 form-control height-50" name="message"></textarea>
+                          </div>
+                      </div>
+                  </div> -->
+              </div><!-- end row -->
+          </form>
+      </div><!-- end contact-form-action -->
+  </div><!-- end billing-content -->
+</div><!-- end billing-form-item -->
+
+

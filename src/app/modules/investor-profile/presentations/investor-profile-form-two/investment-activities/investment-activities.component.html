@@ -1,0 +1,76 @@
+<div class="billing-form-item">
+  <div class="billing-title-wrap">
+    <h3 class="widget-title pb-0">Investment Activities</h3>
+    <div class="title-shape margin-top-10px"></div>
+  </div>
+  <!-- billing-title-wrap -->
+  <div class="billing-content pb-3">
+    <div class="contact-form-action">
+      <form method="post" [formGroup]="objInvestmentAcivities">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text"
+                >No of Business Reviewed in Last 12 Months
+                <span class="text-muted ml-1">(optional)</span></label
+              >
+              <div class="form-group">
+                <span class="la la-pencil form-icon"></span>
+                <input
+                  class="form-control"
+                  type="text"
+                  appOnlyNumber
+                  formControlName="intNoBuisinessReviewed"
+                  placeholder="No of Business Reviewed in Last 12 Month"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- end col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text"
+                >No of Business Invested in Last 12 Months
+                <span class="text-muted ml-1">(optional)</span></label
+              >
+              <div class="form-group">
+                <span class="la la-pencil form-icon"></span>
+                <input
+                  class="form-control"
+                  type="text"
+                  appOnlyNumber
+                  formControlName="intNoBuisinessInvested"
+                  placeholder="No of Business Invested in Last 12 Months"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- end col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="input-box">
+              <label class="label-text"
+                >Total capital invested in Last 12 Months ($)
+                <span class="text-muted ml-1">(optional)</span></label
+              >
+              <div class="form-group">
+                <span class="la la-pencil form-icon"></span>
+                <input
+                  class="form-control"
+                  type="text"
+                  appOnlyNumber
+                  formControlName="intToalCapitalInvested"
+                  placeholder="Total capital invested in Last 12 Months ($)"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- end col-lg-6 -->
+        </div>
+        <!-- end row -->
+      </form>
+    </div>
+    <!-- end contact-form-action -->
+  </div>
+  <!-- end billing-content -->
+</div>
+<!-- end billing-form-item -->
